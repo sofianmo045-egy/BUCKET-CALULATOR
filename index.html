@@ -20,15 +20,15 @@
         .header h1 { margin: 0; font-size: 20px; }
         .header p { margin: 5px 0 0; font-size: 13px; color: var(--accent-blue); }
         
-        .group { padding: 15px 20px; border-bottom: 1px solid #f1f5f9; }
-        .group-title { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; margin-bottom: 10px; display: block; border-left: 3px solid var(--pds-orange); padding-left: 8px; }
+        .main-container { padding: 20px; }
+        .main-title { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; margin-bottom: 20px; display: block; border-left: 4px solid var(--pds-orange); padding-left: 10px; }
         
-        .input-row { display: flex; gap: 8px; margin-bottom: 10px; }
+        .input-row { display: flex; gap: 8px; margin-bottom: 12px; }
         .input-col { flex: 1; }
         .input-col label { font-size: 10px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px; }
         .input-col input { width: 100%; padding: 8px; border: 1.5px solid #e2e8f0; border-radius: 6px; font-size: 13px; outline: none; box-sizing: border-box; text-align: center; }
 
-        .calc-btn { width: calc(100% - 40px); margin: 20px; padding: 16px; background: var(--success-green); color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; }
+        .calc-btn { width: calc(100% - 40px); margin: 10px 20px 20px 20px; padding: 16px; background: var(--success-green); color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; }
 
         .results-area { background: var(--primary-bg); color: #f8fafc; padding: 25px 20px; display: none; }
         .res-section-title { color: var(--pds-orange); font-size: 13px; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 5px; margin: 15px 0 10px; }
@@ -48,50 +48,43 @@
         <p>Measurements and Calibration tool</p>
     </div>
 
-    <div class="group">
-        <span class="group-title">Main Boom/Stick Pins</span>
+    <div class="main-container">
+        <span class="main-title">Enter Input Values</span>
+        
         <div class="input-row">
-            <div class="input-col"><label>Stick Pin X</label><input type="number" id="x_st" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_st" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_st" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Stick Pin X</label><input type="number" id="x_st" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_st" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_st" step="0.001" placeholder="Val"></div>
         </div>
         <div class="input-row">
-            <div class="input-col"><label>Bucket Pin X</label><input type="number" id="x_bu" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_bu" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_bu" step="0.001" placeholder="Enter value"></div>
-        </div>
-    </div>
-
-    <div class="group">
-        <span class="group-title">S3 Pin</span>
-        <div class="input-row">
-            <div class="input-col"><label>S3 Pin X</label><input type="number" id="x_s3" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_s3" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_s3" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Bucket Pin X</label><input type="number" id="x_bu" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_bu" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_bu" step="0.001" placeholder="Val"></div>
         </div>
         <div class="input-row">
-            <div class="input-col"><label>S4 Pin X</label><input type="number" id="x_s4" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_s4" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_s4" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>S3 Pin X</label><input type="number" id="x_s3" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_s3" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_s3" step="0.001" placeholder="Val"></div>
         </div>
         <div class="input-row">
-            <div class="input-col"><label>S5 Pin X</label><input type="number" id="x_s5" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_s5" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_s5" step="0.001" placeholder="Enter value"></div>
-        </div>
-    </div>
-
-    <div class="group">
-        <span class="group-title">Tooth Angle Inputs</span>
-        <div class="input-row">
-            <div class="input-col"><label>T1 Teeth X</label><input type="number" id="x_t1" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_t1" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_t1" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>S4 Pin X</label><input type="number" id="x_s4" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_s4" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_s4" step="0.001" placeholder="Val"></div>
         </div>
         <div class="input-row">
-            <div class="input-col"><label>T5 Pin X</label><input type="number" id="x_t5" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_t5" step="0.001" placeholder="Enter value"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_t5" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>S5 Pin X</label><input type="number" id="x_s5" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_s5" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_s5" step="0.001" placeholder="Val"></div>
+        </div>
+        <div class="input-row">
+            <div class="input-col"><label>T1 Teeth X</label><input type="number" id="x_t1" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_t1" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_t1" step="0.001" placeholder="Val"></div>
+        </div>
+        <div class="input-row">
+            <div class="input-col"><label>T5 Pin X</label><input type="number" id="x_t5" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_t5" step="0.001" placeholder="Val"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_t5" step="0.001" placeholder="Val"></div>
         </div>
     </div>
 
@@ -118,7 +111,7 @@
 
 <script>
     function dist3D(p1, p2) {
-        if (p1 === null || p2 === null) return null;
+        if (!p1 || !p2) return null;
         return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2) + Math.pow(p2.z - p1.z, 2));
     }
 
@@ -126,14 +119,8 @@
         const x = document.getElementById('x_'+id_p).value;
         const y = document.getElementById('y_'+id_p).value;
         const z = document.getElementById('z_'+id_p).value;
-        
         if (x === "" || y === "" || z === "") return null;
-        
-        return {
-            x: parseFloat(x),
-            y: parseFloat(y),
-            z: parseFloat(z)
-        };
+        return { x: parseFloat(x), y: parseFloat(y), z: parseFloat(z) };
     }
 
     function formatRes(val, unit = " m") {
@@ -142,40 +129,34 @@
     }
 
     function calculate() {
-        const ST = getP('st'), BU = getP('bu'), S3 = getP('s3');
-        const S4 = getP('s4'), S5 = getP('s5'), T1 = getP('t1'), T5 = getP('t5');
+        const ST = getP('st'), BU = getP('bu'), S3 = getP('s3'), 
+              S4 = getP('s4'), S5 = getP('s5'), T1 = getP('t1'), T5 = getP('t5');
 
-        // S1
         const s1 = (ST && BU) ? dist3D(ST, BU) : null;
 
-        // S3 & S2
         let s3_val = null, s2_val = null;
         if (s1 && S3) {
             const v_st_bu = { x: BU.x - ST.x, y: BU.y - ST.y, z: BU.z - ST.z };
             const v_st_s3 = { x: S3.x - ST.x, y: S3.y - ST.y, z: S3.z - ST.z };
-            
             const cp = {
                 x: v_st_s3.y * v_st_bu.z - v_st_s3.z * v_st_bu.y,
                 y: v_st_s3.z * v_st_bu.x - v_st_s3.x * v_st_bu.z,
                 z: v_st_s3.x * v_st_bu.y - v_st_s3.y * v_st_bu.x
             };
             s3_val = Math.sqrt(cp.x**2 + cp.y**2 + cp.z**2) / s1;
-
             const v_bu_st = { x: ST.x - BU.x, y: ST.y - BU.y, z: ST.z - BU.z };
             const v_bu_s3 = { x: S3.x - BU.x, y: S3.y - BU.y, z: S3.z - BU.z };
             const dot = (v_bu_s3.x * v_bu_st.x + v_bu_s3.y * v_bu_st.y + v_bu_s3.z * v_bu_st.z);
             s2_val = dot / s1; 
         }
 
-        // T6 Angle
         let t6_val = null;
         if (T1 && T5 && S5) {
-            const vecT1 = { x: T1.x - T5.x, y: T1.y - T5.y, z: T1.z - T5.z };
-            const vecS5 = { x: S5.x - T5.x, y: S5.y - T5.y, z: S5.z - T5.z };
-            const m1 = Math.sqrt(vecT1.x**2 + vecT1.y**2 + vecT1.z**2);
-            const m2 = Math.sqrt(vecS5.x**2 + vecS5.y**2 + vecS5.z**2);
+            const vT1 = { x: T1.x - T5.x, y: T1.y - T5.y, z: T1.z - T5.z };
+            const vS5 = { x: S5.x - T5.x, y: S5.y - T5.y, z: S5.z - T5.z };
+            const m1 = Math.sqrt(vT1.x**2 + vT1.y**2 + vT1.z**2), m2 = Math.sqrt(vS5.x**2 + vS5.y**2 + vS5.z**2);
             if (m1 > 0 && m2 > 0) {
-                const cosT = (vecT1.x * vecS5.x + vecT1.y * vecS5.y + vecT1.z * vecS5.z) / (m1 * m2);
+                const cosT = (vT1.x * vS5.x + vT1.y * vS5.y + vT1.z * vS5.z) / (m1 * m2);
                 t6_val = Math.acos(Math.max(-1, Math.min(1, cosT))) * (180 / Math.PI);
             }
         }
@@ -188,24 +169,15 @@
         document.getElementById('out-ts').innerHTML = formatRes(dist3D(T5, S5));
         document.getElementById('out-t1').innerHTML = formatRes(dist3D(T1, T5));
         document.getElementById('out-t6').innerHTML = formatRes(t6_val, "°");
-        
         document.getElementById('resultsArea').style.display = "block";
     }
 
     function downloadReport() {
-        let content = "EXCAVATOR CALIBRATION REPORT\n";
-        content += "Generated: " + new Date().toLocaleString() + "\n";
-        content += "------------------------------------------\n";
-        content += "RESULTS:\n";
-        content += "S1: " + document.getElementById('out-s1').innerText + "\n";
-        content += "S2: " + document.getElementById('out-s2').innerText + "\n";
-        content += "S3: " + document.getElementById('out-s3').innerText + "\n";
-        content += "S4: " + document.getElementById('out-s4').innerText + "\n";
-        content += "S5: " + document.getElementById('out-s5').innerText + "\n";
-        content += "T5: " + document.getElementById('out-ts').innerText + "\n";
-        content += "T1: " + document.getElementById('out-t1').innerText + "\n";
-        content += "T6: " + document.getElementById('out-t6').innerText + "\n";
-        
+        let content = "EXCAVATOR CALIBRATION REPORT\nGenerated: " + new Date().toLocaleString() + "\n------------------------------------------\nRESULTS:\n";
+        ["s1", "s2", "s3", "s4", "s5", "ts", "t1", "t6"].forEach(id => {
+            const label = document.getElementById('out-'+id).previousElementSibling?.innerText || id.toUpperCase();
+            content += label + ": " + document.getElementById('out-'+id).innerText + "\n";
+        });
         const blob = new Blob([content], { type: 'text/plain' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
