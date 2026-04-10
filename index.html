@@ -31,7 +31,7 @@
         .input-row { display: flex; gap: 10px; }
         .input-col { flex: 1; }
         .input-col label { font-size: 10px; color: #94a3b8; font-weight: 600; display: block; margin-bottom: 2px; text-transform: uppercase; }
-        .input-col input { width: 100%; padding: 10px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box; text-align: center; transition: border-color 0.2s; }
+        .input-col input { width: 100%; padding: 10px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box; text-align: center; }
 
         .calc-btn { width: calc(100% - 40px); margin: 10px 20px 20px 20px; padding: 16px; background: var(--success-green); color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; }
 
@@ -39,7 +39,6 @@
         .res-section-title { color: var(--pds-orange); font-size: 13px; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 5px; margin: 15px 0 10px; }
         .res-line { display: flex; justify-content: space-between; margin: 8px 0; font-size: 14px; border-bottom: 1px solid #1e293b; padding-bottom: 3px; }
         .res-line b { color: #fff; }
-        .error-text { color: var(--error-red) !important; font-size: 12px; }
         
         .footer-tools { padding: 15px; background: #fafafa; text-align: center; border-top: 1px solid #eee; }
         .report-btn { background: #64748b; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 12px; }
@@ -63,7 +62,6 @@
         <div class="input-block"><span class="block-label">S4 Pin</span><div class="input-row"><div class="input-col"><label>X</label><input type="number" id="x_s4" step="0.001"></div><div class="input-col"><label>Y</label><input type="number" id="y_s4" step="0.001"></div><div class="input-col"><label>Z</label><input type="number" id="z_s4" step="0.001"></div></div></div>
         <div class="input-block"><span class="block-label">S5 Pin</span><div class="input-row"><div class="input-col"><label>X</label><input type="number" id="x_s5" step="0.001"></div><div class="input-col"><label>Y</label><input type="number" id="y_s5" step="0.001"></div><div class="input-col"><label>Z</label><input type="number" id="z_s5" step="0.001"></div></div></div>
         <div class="input-block"><span class="block-label">T1 Teeth</span><div class="input-row"><div class="input-col"><label>X</label><input type="number" id="x_t1" step="0.001"></div><div class="input-col"><label>Y</label><input type="number" id="y_t1" step="0.001"></div><div class="input-col"><label>Z</label><input type="number" id="z_t1" step="0.001"></div></div></div>
-        <div class="input-block"><span class="block-label">T5 Pin</span><div class="input-row"><div class="input-col"><label>X</label><input type="number" id="x_t5" step="0.001"></div><div class="input-col"><label>Y</label><input type="number" id="y_t5" step="0.001"></div><div class="input-col"><label>Z</label><input type="number" id="z_t5" step="0.001"></div></div></div>
     </div>
 
     <button class="calc-btn" onclick="calculate()">Calculate Results</button>
@@ -86,20 +84,19 @@
         <button class="report-btn" style="width:100%; margin-top:20px;" onclick="downloadReport()">Download TXT Report</button>
     </div>
 
-    <div class="footer-tools">
-        <small>How to install: Chrome Menu > Install App</small>
-    </div>
-</div>
+    
 
 <script>
-    // Logic is same as previous version
     function dist3D(p1, p2) { if (!p1 || !p2) return null; return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2) + Math.pow(p2.z - p1.z, 2)); }
     function getP(id_p) { const x = document.getElementById('x_'+id_p).value, y = document.getElementById('y_'+id_p).value, z = document.getElementById('z_'+id_p).value; if (x === "" || y === "" || z === "") return null; return { x: parseFloat(x), y: parseFloat(y), z: parseFloat(z) }; }
-    function formatRes(val, unit = " m") { if (val === null || isNaN(val)) return '<span class="error-text">no input</span>'; return val.toFixed(3) + unit; }
+    function formatRes(val, unit = " m") { if (val === null || isNaN(val)) return '<span style="color:#ef4444;font-weight:normal;font-size:12px">no input</span>'; return val.toFixed(3) + unit; }
 
     function calculate() {
-        const ST = getP('st'), BU = getP('bu'), S3 = getP('s3'), S4 = getP('s4'), S5 = getP('s5'), T1 = getP('t1'), T5 = getP('t5');
+        // T5 logic is replaced by BU (Bucket Pin)
+        const ST = getP('st'), BU = getP('bu'), S3 = getP('s3'), S4 = getP('s4'), S5 = getP('s5'), T1 = getP('t1');
+        
         const s1 = (ST && BU) ? dist3D(ST, BU) : null;
+        
         let s3_val = null, s2_val = null;
         if (s1 && S3) {
             const v_st_bu = { x: BU.x - ST.x, y: BU.y - ST.y, z: BU.z - ST.z };
@@ -110,19 +107,23 @@
             const v_bu_s3 = { x: S3.x - BU.x, y: S3.y - BU.y, z: S3.z - BU.z };
             s2_val = (v_bu_s3.x * v_bu_st.x + v_bu_s3.y * v_bu_st.y + v_bu_s3.z * v_bu_st.z) / s1; 
         }
+
         let t6_val = null;
-        if (T1 && T5 && S5) {
-            const vT1 = { x: T1.x - T5.x, y: T1.y - T5.y, z: T1.z - T5.z }, vS5 = { x: S5.x - T5.x, y: S5.y - T5.y, z: S5.z - T5.z };
+        if (T1 && BU && S5) {
+            // Using BU instead of T5
+            const vT1 = { x: T1.x - BU.x, y: T1.y - BU.y, z: T1.z - BU.z };
+            const vS5 = { x: S5.x - BU.x, y: S5.y - BU.y, z: S5.z - BU.z };
             const m1 = Math.sqrt(vT1.x**2 + vT1.y**2 + vT1.z**2), m2 = Math.sqrt(vS5.x**2 + vS5.y**2 + vS5.z**2);
             if (m1 > 0 && m2 > 0) t6_val = Math.acos(Math.max(-1, Math.min(1, (vT1.x * vS5.x + vT1.y * vS5.y + vT1.z * vS5.z) / (m1 * m2)))) * (180 / Math.PI);
         }
+
         document.getElementById('out-s1').innerHTML = formatRes(s1);
         document.getElementById('out-s2').innerHTML = formatRes(s2_val);
         document.getElementById('out-s3').innerHTML = formatRes(s3_val);
         document.getElementById('out-s4').innerHTML = formatRes(dist3D(S3, S4));
         document.getElementById('out-s5').innerHTML = formatRes(dist3D(S4, S5));
-        document.getElementById('out-ts').innerHTML = formatRes(dist3D(T5, S5));
-        document.getElementById('out-t1').innerHTML = formatRes(dist3D(T1, T5));
+        document.getElementById('out-ts').innerHTML = formatRes(dist3D(BU, S5)); // T5 (Bucket Pin) to S5
+        document.getElementById('out-t1').innerHTML = formatRes(dist3D(T1, BU)); // T1 to T5 (Bucket Pin)
         document.getElementById('out-t6').innerHTML = formatRes(t6_val, "°");
         document.getElementById('resultsArea').style.display = "block";
     }
