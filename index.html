@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -11,6 +11,7 @@
             --success-green: #059669;
             --text-gray: #94a3b8;
             --pds-orange: #f59e0b;
+            --error-red: #ef4444;
         }
 
         body { background-color: #f1f5f9; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 20px 10px; font-family: 'Segoe UI', sans-serif; margin: 0; box-sizing: border-box; }
@@ -20,7 +21,7 @@
         .header p { margin: 5px 0 0; font-size: 13px; color: var(--accent-blue); }
         
         .group { padding: 15px 20px; border-bottom: 1px solid #f1f5f9; }
-        .group-title { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; margin-bottom: 10px; display: block; border-right: 3px solid var(--pds-orange); padding-right: 8px; }
+        .group-title { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; margin-bottom: 10px; display: block; border-left: 3px solid var(--pds-orange); padding-left: 8px; }
         
         .input-row { display: flex; gap: 8px; margin-bottom: 10px; }
         .input-col { flex: 1; }
@@ -33,6 +34,7 @@
         .res-section-title { color: var(--pds-orange); font-size: 13px; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 5px; margin: 15px 0 10px; }
         .res-line { display: flex; justify-content: space-between; margin: 8px 0; font-size: 14px; border-bottom: 1px solid #1e293b; padding-bottom: 3px; }
         .res-line b { color: #fff; }
+        .error-text { color: var(--error-red) !important; font-size: 12px; }
         
         .footer-tools { padding: 15px; background: #fafafa; text-align: center; border-top: 1px solid #eee; }
         .report-btn { background: #64748b; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 12px; }
@@ -49,47 +51,47 @@
     <div class="group">
         <span class="group-title">Main Boom/Stick Pins</span>
         <div class="input-row">
-            <div class="input-col"><label>Stick Pin X</label><input type="number" id="x_st" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_st" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_st" step="0.001" placeholder="0.000"></div>
+            <div class="input-col"><label>Stick Pin X</label><input type="number" id="x_st" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_st" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_st" step="0.001" placeholder="Enter value"></div>
         </div>
         <div class="input-row">
-            <div class="input-col"><label>Bucket Pin X</label><input type="number" id="x_bu" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_bu" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_bu" step="0.001" placeholder="0.000"></div>
+            <div class="input-col"><label>Bucket Pin X</label><input type="number" id="x_bu" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_bu" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_bu" step="0.001" placeholder="Enter value"></div>
         </div>
     </div>
 
     <div class="group">
-        <span class="group-title">S3 Pin (PDS Sensor)</span>
+        <span class="group-title">S3 Pin</span>
         <div class="input-row">
-            <div class="input-col"><label>S3 Pin X</label><input type="number" id="x_s3" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_s3" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_s3" step="0.001" placeholder="0.000"></div>
+            <div class="input-col"><label>S3 Pin X</label><input type="number" id="x_s3" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_s3" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_s3" step="0.001" placeholder="Enter value"></div>
         </div>
         <div class="input-row">
-            <div class="input-col"><label>S4 Pin X</label><input type="number" id="x_s4" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_s4" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_s4" step="0.001" placeholder="0.000"></div>
+            <div class="input-col"><label>S4 Pin X</label><input type="number" id="x_s4" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_s4" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_s4" step="0.001" placeholder="Enter value"></div>
         </div>
         <div class="input-row">
-            <div class="input-col"><label>S5 Pin X</label><input type="number" id="x_s5" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_s5" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_s5" step="0.001" placeholder="0.000"></div>
+            <div class="input-col"><label>S5 Pin X</label><input type="number" id="x_s5" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_s5" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_s5" step="0.001" placeholder="Enter value"></div>
         </div>
     </div>
 
     <div class="group">
         <span class="group-title">Tooth Angle Inputs</span>
         <div class="input-row">
-            <div class="input-col"><label>T1 Teeth X</label><input type="number" id="x_t1" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_t1" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_t1" step="0.001" placeholder="0.000"></div>
+            <div class="input-col"><label>T1 Teeth X</label><input type="number" id="x_t1" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_t1" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_t1" step="0.001" placeholder="Enter value"></div>
         </div>
         <div class="input-row">
-            <div class="input-col"><label>T5 Pin X</label><input type="number" id="x_t5" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Y</label><input type="number" id="y_t5" step="0.001" placeholder="0.000"></div>
-            <div class="input-col"><label>Z</label><input type="number" id="z_t5" step="0.001" placeholder="0.000"></div>
+            <div class="input-col"><label>T5 Pin X</label><input type="number" id="x_t5" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Y</label><input type="number" id="y_t5" step="0.001" placeholder="Enter value"></div>
+            <div class="input-col"><label>Z</label><input type="number" id="z_t5" step="0.001" placeholder="Enter value"></div>
         </div>
     </div>
 
@@ -97,14 +99,14 @@
 
     <div id="resultsArea" class="results-area">
         <div class="res-section-title">CALIBRATION VALUES</div>
-        <div class="res-line"><span>S1 (Stick Length):</span> <b id="out-s1">0.000 m</b></div>
-        <div class="res-line"><span>S2 (Projection from Bucket):</span> <b id="out-s2">0.000 m</b></div>
-        <div class="res-line"><span>S3 (Offset from Stick):</span> <b id="out-s3">0.000 m</b></div>
-        <div class="res-line"><span>S4 (S3 to S4 Dist):</span> <b id="out-s4">0.000 m</b></div>
-        <div class="res-line"><span>S5 (S4 to S5 Dist):</span> <b id="out-s5">0.000 m</b></div>
-        <div class="res-line"><span>TS (T5 to S5 Dist):</span> <b id="out-ts">0.000 m</b></div>
-        <div class="res-line"><span>T1 (T1 to T5 Dist):</span> <b id="out-t1">0.000 m</b></div>
-        <div class="res-line"><span>T6 (Tooth Angle):</span> <b id="out-t6" style="color:var(--pds-orange)">0.000°</b></div>
+        <div class="res-line"><span>S1:</span> <b id="out-s1"></b></div>
+        <div class="res-line"><span>S2:</span> <b id="out-s2"></b></div>
+        <div class="res-line"><span>S3:</span> <b id="out-s3"></b></div>
+        <div class="res-line"><span>S4:</span> <b id="out-s4"></b></div>
+        <div class="res-line"><span>S5:</span> <b id="out-s5"></b></div>
+        <div class="res-line"><span>T5:</span> <b id="out-ts"></b></div>
+        <div class="res-line"><span>T1:</span> <b id="out-t1"></b></div>
+        <div class="res-line"><span>T6:</span> <b id="out-t6" style="color:var(--pds-orange)"></b></div>
         
         <button class="report-btn" style="width:100%; margin-top:20px;" onclick="downloadReport()">Download TXT Report</button>
     </div>
@@ -116,25 +118,39 @@
 
 <script>
     function dist3D(p1, p2) {
+        if (p1 === null || p2 === null) return null;
         return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2) + Math.pow(p2.z - p1.z, 2));
     }
 
-    function calculate() {
-        const getP = (id_p) => ({
-            x: parseFloat(document.getElementById('x_'+id_p).value) || 0,
-            y: parseFloat(document.getElementById('y_'+id_p).value) || 0,
-            z: parseFloat(document.getElementById('z_'+id_p).value) || 0
-        });
+    function getP(id_p) {
+        const x = document.getElementById('x_'+id_p).value;
+        const y = document.getElementById('y_'+id_p).value;
+        const z = document.getElementById('z_'+id_p).value;
+        
+        if (x === "" || y === "" || z === "") return null;
+        
+        return {
+            x: parseFloat(x),
+            y: parseFloat(y),
+            z: parseFloat(z)
+        };
+    }
 
+    function formatRes(val, unit = " m") {
+        if (val === null || isNaN(val)) return '<span class="error-text">no input values</span>';
+        return val.toFixed(3) + unit;
+    }
+
+    function calculate() {
         const ST = getP('st'), BU = getP('bu'), S3 = getP('s3');
         const S4 = getP('s4'), S5 = getP('s5'), T1 = getP('t1'), T5 = getP('t5');
 
         // S1
-        const s1 = dist3D(ST, BU);
+        const s1 = (ST && BU) ? dist3D(ST, BU) : null;
 
         // S3 & S2
-        let s3_val = 0, s2_val = 0;
-        if (s1 > 0) {
+        let s3_val = null, s2_val = null;
+        if (s1 && S3) {
             const v_st_bu = { x: BU.x - ST.x, y: BU.y - ST.y, z: BU.z - ST.z };
             const v_st_s3 = { x: S3.x - ST.x, y: S3.y - ST.y, z: S3.z - ST.z };
             
@@ -145,7 +161,6 @@
             };
             s3_val = Math.sqrt(cp.x**2 + cp.y**2 + cp.z**2) / s1;
 
-            // S2: Distance along the line from BU to intersection
             const v_bu_st = { x: ST.x - BU.x, y: ST.y - BU.y, z: ST.z - BU.z };
             const v_bu_s3 = { x: S3.x - BU.x, y: S3.y - BU.y, z: S3.z - BU.z };
             const dot = (v_bu_s3.x * v_bu_st.x + v_bu_s3.y * v_bu_st.y + v_bu_s3.z * v_bu_st.z);
@@ -153,24 +168,27 @@
         }
 
         // T6 Angle
-        let t6_val = 0;
-        const vecT1 = { x: T1.x - T5.x, y: T1.y - T5.y, z: T1.z - T5.z };
-        const vecS5 = { x: S5.x - T5.x, y: S5.y - T5.y, z: S5.z - T5.z };
-        const m1 = Math.sqrt(vecT1.x**2 + vecT1.y**2 + vecT1.z**2);
-        const m2 = Math.sqrt(vecS5.x**2 + vecS5.y**2 + vecS5.z**2);
-        if (m1 > 0 && m2 > 0) {
-            const cosT = (vecT1.x * vecS5.x + vecT1.y * vecS5.y + vecT1.z * vecS5.z) / (m1 * m2);
-            t6_val = Math.acos(Math.max(-1, Math.min(1, cosT))) * (180 / Math.PI);
+        let t6_val = null;
+        if (T1 && T5 && S5) {
+            const vecT1 = { x: T1.x - T5.x, y: T1.y - T5.y, z: T1.z - T5.z };
+            const vecS5 = { x: S5.x - T5.x, y: S5.y - T5.y, z: S5.z - T5.z };
+            const m1 = Math.sqrt(vecT1.x**2 + vecT1.y**2 + vecT1.z**2);
+            const m2 = Math.sqrt(vecS5.x**2 + vecS5.y**2 + vecS5.z**2);
+            if (m1 > 0 && m2 > 0) {
+                const cosT = (vecT1.x * vecS5.x + vecT1.y * vecS5.y + vecT1.z * vecS5.z) / (m1 * m2);
+                t6_val = Math.acos(Math.max(-1, Math.min(1, cosT))) * (180 / Math.PI);
+            }
         }
 
-        document.getElementById('out-s1').innerText = s1.toFixed(3) + " m";
-        document.getElementById('out-s2').innerText = s2_val.toFixed(3) + " m";
-        document.getElementById('out-s3').innerText = s3_val.toFixed(3) + " m";
-        document.getElementById('out-s4').innerText = dist3D(S3, S4).toFixed(3) + " m";
-        document.getElementById('out-s5').innerText = dist3D(S4, S5).toFixed(3) + " m";
-        document.getElementById('out-ts').innerText = dist3D(T5, S5).toFixed(3) + " m";
-        document.getElementById('out-t1').innerText = dist3D(T1, T5).toFixed(3) + " m";
-        document.getElementById('out-t6').innerText = t6_val.toFixed(3) + "°";
+        document.getElementById('out-s1').innerHTML = formatRes(s1);
+        document.getElementById('out-s2').innerHTML = formatRes(s2_val);
+        document.getElementById('out-s3').innerHTML = formatRes(s3_val);
+        document.getElementById('out-s4').innerHTML = formatRes(dist3D(S3, S4));
+        document.getElementById('out-s5').innerHTML = formatRes(dist3D(S4, S5));
+        document.getElementById('out-ts').innerHTML = formatRes(dist3D(T5, S5));
+        document.getElementById('out-t1').innerHTML = formatRes(dist3D(T1, T5));
+        document.getElementById('out-t6').innerHTML = formatRes(t6_val, "°");
+        
         document.getElementById('resultsArea').style.display = "block";
     }
 
@@ -179,14 +197,14 @@
         content += "Generated: " + new Date().toLocaleString() + "\n";
         content += "------------------------------------------\n";
         content += "RESULTS:\n";
-        content += "S1 (Stick Length): " + document.getElementById('out-s1').innerText + "\n";
-        content += "S2 (Proj. from Bucket): " + document.getElementById('out-s2').innerText + "\n";
-        content += "S3 (Offset from Stick): " + document.getElementById('out-s3').innerText + "\n";
-        content += "S4 (Dist S3-S4): " + document.getElementById('out-s4').innerText + "\n";
-        content += "S5 (Dist S4-S5): " + document.getElementById('out-s5').innerText + "\n";
-        content += "TS (Dist T5-S5): " + document.getElementById('out-ts').innerText + "\n";
-        content += "T1 (Dist T1-T5): " + document.getElementById('out-t1').innerText + "\n";
-        content += "T6 (Tooth Angle): " + document.getElementById('out-t6').innerText + "\n";
+        content += "S1: " + document.getElementById('out-s1').innerText + "\n";
+        content += "S2: " + document.getElementById('out-s2').innerText + "\n";
+        content += "S3: " + document.getElementById('out-s3').innerText + "\n";
+        content += "S4: " + document.getElementById('out-s4').innerText + "\n";
+        content += "S5: " + document.getElementById('out-s5').innerText + "\n";
+        content += "T5: " + document.getElementById('out-ts').innerText + "\n";
+        content += "T1: " + document.getElementById('out-t1').innerText + "\n";
+        content += "T6: " + document.getElementById('out-t6').innerText + "\n";
         
         const blob = new Blob([content], { type: 'text/plain' });
         const link = document.createElement('a');
